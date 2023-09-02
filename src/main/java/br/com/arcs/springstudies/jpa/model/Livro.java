@@ -26,6 +26,6 @@ public class Livro {
     private Integer volume;
     @ManyToOne
     private Genero genero;
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+    @ManyToOne(cascade = { CascadeType.MERGE })
     private Editora editora;
 }

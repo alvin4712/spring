@@ -1,5 +1,6 @@
 package br.com.arcs.springstudies.jpa;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -55,7 +56,6 @@ public class JpaRelacionamentoComCascataTest {
 
         // editoraRepository.save(editora);
         generoRepository.save(genero);
-        livroRepository.save(livro);
-        // assertDoesNotThrow(() -> livroRepository.save(livro));
+        assertDoesNotThrow(() -> livroRepository.save(livro));
     }
 }
