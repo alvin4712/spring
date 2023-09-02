@@ -1,5 +1,6 @@
 package br.com.arcs.springstudies.jpa.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,7 +20,8 @@ public class Exemplar {
     private ExemplarId exemplarId;
 
     @MapsId("livroIsbn")
-    @ManyToOne
+
+    @ManyToOne(cascade = { CascadeType.PERSIST })
     private Livro livro;
 
     @Enumerated(EnumType.ORDINAL)
