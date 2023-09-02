@@ -1,6 +1,7 @@
 package br.com.arcs.springstudies.jpa;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,8 @@ import br.com.arcs.springstudies.jpa.repository.LivroRepository;
 @Sql("test-registries.sql")
 public class JpaRelacionamentoComCascataTest {
     /*
-     * Editora: cascade
-     * Genero: no cascade
+     * Editora: cascade = {Merge, Persistência}
+     * Genero: cascade = {}
      */
     private Livro livro = new Livro(9788533302273l, "Titulo", 1, 1, null, null);
     private Genero genero = new Genero(1l, "Suspense");
@@ -53,9 +54,22 @@ public class JpaRelacionamentoComCascataTest {
         livro.setEditora(editora);
         livro.setGenero(genero);
         assertThrows(JpaObjectRetrievalFailureException.class, () -> livroRepository.save(livro));
+        assertEquals(0, generoRepository.count());
+        assertEquals(0, editoraRepository.count());
+        assertEquals(0, livroRepository.count());
 
-        // editoraRepository.save(editora);
+        /*
+         * Após salvar apenas genero, o persistência ocorreu sem problema.
+         */
         generoRepository.save(genero);
         assertDoesNotThrow(() -> livroRepository.save(livro));
+        assertEquals(1, generoRepository.count());
+        assertEquals(1, editoraRepository.count());
+        assertEquals(1, livroRepository.count());
+        /*
+         * Objeto salvo em cascata
+        */
+        assertEquals("Genero(codigo=1, nome=Suspense)", generoRepository.findAll().get(0).toString());
+
     }
 }
