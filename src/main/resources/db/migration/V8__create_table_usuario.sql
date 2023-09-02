@@ -1,2 +1,2 @@
-create table usuario (cpf varchar(255) not null check (cpf<=11), email varchar(255), endereco varchar(255), nome varchar(255), perfil_codigo bigint, primary key (cpf));
+create table usuario (cpf varchar(255) not null, email varchar(255), endereco varchar(255), nome varchar(255), perfil_codigo bigint, primary key (cpf));
 alter table if exists usuario add constraint FKq8qqotuky8bd7vwyrnfqksj5d foreign key (perfil_codigo) references perfil;
