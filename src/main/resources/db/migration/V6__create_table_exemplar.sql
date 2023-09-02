@@ -1,0 +1,2 @@
+create table exemplar (codigo bigint not null, status tinyint check (status between 0 and 2), livro_isbn varchar(255) not null, primary key (codigo, livro_isbn));
+alter table if exists exemplar add constraint FKk3gnm0586m5asioh4w4a7ov3y foreign key (livro_isbn) references livro;

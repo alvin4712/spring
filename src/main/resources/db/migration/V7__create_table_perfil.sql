@@ -1,0 +1,1 @@
+create table perfil (codigo bigint not null, limite integer, nome varchar(255), prazo integer, primary key (codigo));

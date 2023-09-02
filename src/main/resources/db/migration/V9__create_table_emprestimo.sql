@@ -1,0 +1,3 @@
+create table emprestimo (data_emprestimo timestamp(6) not null, data_entega timestamp(6), prazo integer, usuario_cpf varchar(255) not null, exemplar_codigo bigint not null, exemplar_livro_isbn varchar(255) not null, primary key (data_emprestimo, exemplar_codigo, exemplar_livro_isbn, usuario_cpf));
+alter table if exists emprestimo add constraint FK8wy8lxjud24u3ctey42qv5kff foreign key (exemplar_codigo, exemplar_livro_isbn) references exemplar;
+alter table if exists emprestimo add constraint FKrh51fac4l1rybvagrbt21ana1 foreign key (usuario_cpf) references usuario;

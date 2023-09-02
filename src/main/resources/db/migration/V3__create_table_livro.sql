@@ -1,0 +1,3 @@
+create table livro (isbn varchar(255) not null, edicao integer, titulo varchar(255), volume integer, editora_codigo bigint, genero_codigo bigint, primary key (isbn));
+alter table if exists livro add constraint FKh3giqnt7lks7qf7yocn1dcul0 foreign key (editora_codigo) references editora;
+alter table if exists livro add constraint FKq9go90t27a5f32hi9jtavb0la foreign key (genero_codigo) references genero;

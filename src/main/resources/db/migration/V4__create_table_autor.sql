@@ -1,0 +1,1 @@
+create table autor (codigo bigint not null, nome varchar(255), primary key (codigo));

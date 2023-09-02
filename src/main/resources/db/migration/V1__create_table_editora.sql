@@ -1,0 +1,1 @@
+create table editora (codigo bigint not null, cidade varchar(255), nome varchar(255), primary key (codigo));
